@@ -1,7 +1,6 @@
 import axios, { type AxiosResponse } from 'axios';
 
 interface Client {
-  id: number
   name: string
   email: string
   phoneNumber: string
