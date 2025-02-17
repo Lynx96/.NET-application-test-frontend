@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Client List</h1>
+    <h1>Lista de Clientes</h1>
     <ul>
       <li v-for="client in clients" :key="client.id">
         <p><strong>ID:</strong> {{ client.id }}</p>
@@ -14,13 +14,13 @@
 
 <script lang="ts">
 
-import clientService from './../services/ClientService'
+import clientService from '../services/ClientService'
 
 interface Client {
-  id: number
-  name: string
-  email: string
-  phoneNumber: string
+  id: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
 }
 
 export default {
@@ -37,7 +37,7 @@ export default {
     async fetchClients() {
       try {
         const response = await clientService.getClients();
-        console.log("aaaaaaaaaaaaa", response)
+        console.log("Os clientes são:", response)
         this.clients = response;
 
       } catch (error) {

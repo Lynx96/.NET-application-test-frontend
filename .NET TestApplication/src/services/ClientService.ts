@@ -1,10 +1,13 @@
 import axios, { type AxiosResponse } from 'axios';
 
 interface Client {
+  id: number
   name: string
   email: string
   phoneNumber: string
 }
+
+type CreateClientData = Omit<Client, 'id'>;
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:5000/api', // Base URL for your API
@@ -18,7 +21,7 @@ export default {
       const response: AxiosResponse<Client[]> = await axiosInstance.get<Client[]>('/Clients'); // GET para listar todos os clientes
       return response.data
     },
-    async createClient(clientData: Client): Promise<Client> {
+    async createClient(clientData: CreateClientData): Promise<Client> {
       const response: AxiosResponse<Client> = await axiosInstance.post<Client>('/Clients', clientData);
       return response.data // POST para criar um cliente
     },
